@@ -26,15 +26,15 @@ Abaixo está o fluxo básico do Systems Manager sendo usado para executar comand
 
 ## 🖥️ Etapas Realizadas
 
-### 1️⃣ Verificação da Instância EC2
+1️⃣ Verificação da Instância EC2
+
 Executei o comando para listar as instâncias e confirmar o estado de execução:
 
-```bash
 aws ec2 describe-instances \
   --query "Reservations[*].Instances[*].{ID:InstanceId,IP:PublicIpAddress,Estado:State.Name}" \
   --output table
 
-### 2️⃣ Confirmação de Tags e Stack do CloudFormation
+2️⃣ Confirmação de Tags e Stack do CloudFormation
 
 A instância está sendo gerenciada pelo Systems Manager, conforme tags exibidas via CLI:
 
@@ -44,17 +44,16 @@ aws ec2 describe-tags \
 
 3️⃣ Acesso pelo Session Manager
 
-O acesso foi feito diretamente pelo AWS Systems Manager > Session Manager:
-
+O acesso foi feito diretamente por AWS Systems Manager → Session Manager.
 A instância i-0e12251ee83c4bcc0 foi identificada como Managed Instance, com o agente 3.3.3050.0 ativo e status running na região us-west-2a.
 
 4️⃣ Execução de Comandos via Run Command
 
-Com o documento AWS-RunShellScript, foi possível executar scripts diretamente na instância, como instalação de pacotes, atualizações ou verificações de status.
+Com o documento AWS-RunShellScript, foi possível executar scripts diretamente na instância — como instalação de pacotes, atualizações e verificações — sem necessidade de SSH.
 
 5️⃣ Visualização do Inventário
 
-O inventário de software coletado pelo Systems Manager mostra todas as aplicações e bibliotecas instaladas:
+O inventário de software coletado pelo Systems Manager mostra todas as aplicações e bibliotecas instaladas.
 
 Exemplo de resultado exibido:
 
@@ -64,18 +63,21 @@ libtasn1	System Environment/Libs	4.10	2025-10-08T07:27:04Z
 🧩 Resultados Obtidos
 
 ✔️ Instância EC2 registrada e gerenciada com sucesso pelo Systems Manager
+
 ✔️ Acesso remoto via Session Manager (sem necessidade de SSH)
+
 ✔️ Execução de comandos via Run Command
+
 ✔️ Coleta de inventário completa e visualização detalhada de pacotes
 
 🏁 Conclusão
 
 O AWS Systems Manager facilita a administração de servidores em larga escala, proporcionando:
 
-Segurança (sem abrir portas SSH)
+🔒 Segurança (sem abrir portas SSH)
 
-Centralização de logs e comandos
+🧠 Centralização de logs e comandos
 
-Automação de tarefas repetitivas
+⚙️ Automação de tarefas repetitivas
 
-Monitoramento e inventário de aplicações
+📊 Monitoramento e inventário de aplicações
