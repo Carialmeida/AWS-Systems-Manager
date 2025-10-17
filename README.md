@@ -20,7 +20,7 @@ Após concluir este laboratório, você será capaz de:
 
 Abaixo está o fluxo básico do Systems Manager sendo usado para executar comandos em uma instância EC2:
 
-![Arquitetura do Systems Manager](imagens/system.png)
+![Arquitetura do Systems Manager](https://raw.githubusercontent.com/Carialmeida/AWS-Systems-Manager/main/imagens/aws.png)
 
 ---
 
